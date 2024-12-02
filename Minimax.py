@@ -123,6 +123,7 @@ def minimax(state, k, pruning):
             print(((k - depth) * 2) * " " + f'col = {col}, {value}')
 
     print(f'The Agent plays in column {column}')
+    
+    return column
 
 
-minimax(initial_state, 4, True)

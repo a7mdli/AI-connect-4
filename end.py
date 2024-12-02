@@ -30,4 +30,4 @@ class End_frame(ttk.Frame):
     def initialize_score(self, player_score, agent_score):
         self.label_text.set("Winner: Player") if player_score>agent_score else self.label_text.set("Winner: Agent") if agent_score>player_score else self.label_text.set("Draw")
         self.player_score.set("Player score: "+str(player_score))
-        self.agent_score.set("Player score: "+str(agent_score))
+        self.agent_score.set("Agent score: "+str(agent_score))

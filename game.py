@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 
 import test_funcs as test
+from Minimax import minimax
 
 class GameFrame(ttk.Frame):
     def __init__(self, parent, controller):
@@ -79,9 +80,9 @@ class GameFrame(ttk.Frame):
     
     def agent_move(self):
         if self.algorithm=="Minimax without alpha-beta pruning":
-            self.put_disc(test.minimax(self.game_grid), "Agent")
+            self.put_disc(minimax(self.game_grid, self.k, False), "Agent")
         elif self.algorithm=="Minimax with alpha-beta pruning":
-            self.put_disc(test.pruning_minimax(self.game_grid), "Agent")
+            self.put_disc(minimax(self.game_grid, self.k, True), "Agent")
         else:
             self.put_disc(test.expected_minimax(self.game_grid), "Agent")
 
@@ -101,6 +102,7 @@ class GameFrame(ttk.Frame):
             self.grid_canvas.itemconfig(self.oval_ids[row][col_num], fill="yellow")
 
         self.update_score(player)
+        self.grid_canvas.update_idletasks()
 
     def update_score(self, player):
         rows = 6
