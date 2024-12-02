@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from ctypes import windll
+from ctypes import cdll
 
 from menu import *
 from config import *
@@ -12,7 +12,7 @@ class App(tk.Tk):
         super().__init__()
 
         try: 
-            windll.shcore.SetProcessDpiAwareness(1) 
+            cdll.shcore.SetProcessDpiAwareness(1)
         except: 
             pass
 
