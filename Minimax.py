@@ -1,5 +1,7 @@
 import copy
 
+from helperFunctions import heuristic_evaluation, grid_to_string
+
 uppermost_row = 0
 
 initial_state = [['e', 'e', 'e', 'e', 'e', 'e', 'e'],
@@ -11,7 +13,7 @@ initial_state = [['e', 'e', 'e', 'e', 'e', 'e', 'e'],
 
 
 def heuristic(state):
-    return ord(state[5][0]) - ord('a')
+    return heuristic_evaluation(grid_to_string(state))
 
 
 def terminal(state):
