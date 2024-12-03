@@ -3,6 +3,7 @@ from tkinter import ttk
 
 import test_funcs as test
 from Minimax import minimax
+from Expectimax import expectiminimax_2d
 
 class GameFrame(ttk.Frame):
     def __init__(self, parent, controller):
@@ -84,7 +85,7 @@ class GameFrame(ttk.Frame):
         elif self.algorithm=="Minimax with alpha-beta pruning":
             self.put_disc(minimax(self.game_grid, self.k, True), "Agent")
         else:
-            self.put_disc(test.expected_minimax(self.game_grid), "Agent")
+            self.put_disc(expectiminimax_2d(self.game_grid, self.k)[1], "Agent")
 
     def put_disc(self, col_num, player):
         if self.game_grid[0][col_num]!="e":
