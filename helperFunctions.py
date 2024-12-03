@@ -1,14 +1,15 @@
 
-weights = [
-    [3, 4, 5, 7, 5, 4, 3],
-    [4, 6, 8, 10, 8, 6, 4],
-    [5, 8, 11, 13, 11, 8, 5],
-    [5, 8, 11, 13, 11, 8, 5],
-    [4, 6, 8, 10, 8, 6, 4],
-    [3, 4, 5, 7, 5, 4, 3],
-]
 
-def heuristic_evaluation(grid_string, weights, width=7):
+def heuristic_evaluation(grid_string):
+    width=7
+    weights = [
+        [3, 4, 5, 7, 5, 4, 3],
+        [4, 6, 8, 10, 8, 6, 4],
+        [5, 8, 11, 13, 11, 8, 5],
+        [5, 8, 11, 13, 11, 8, 5],
+        [4, 6, 8, 10, 8, 6, 4],
+        [3, 4, 5, 7, 5, 4, 3],
+    ]
     height = len(weights)  # Number of rows
     score = 0
 
@@ -26,20 +27,24 @@ def heuristic_evaluation(grid_string, weights, width=7):
 def grid_to_string(grid):
     return ''.join([''.join(row) for row in grid])
 
-def string_to_grid(grid_string, width=7):
+def string_to_grid(grid_string):
+    width=7
     return [list(grid_string[i:i+width]) for i in range(0, len(grid_string), width)]
 
-def drop_disc(grid_string, column, disc, width=7):
-    grid = string_to_grid(grid_string, width)
+def drop_disc(grid_string, column, disc):
+    width=7
+    grid = string_to_grid(grid_string)
     for row in reversed(range(len(grid))):  # Start from bottom row
         if grid[row][column] == 'e':  # Find the first empty slot
             grid[row][column] = disc
             return grid_to_string(grid)  # Return new grid as string
     return None  # Invalid move if column is full
 
-def game_over(grid_string, width=7, height=6):
+def game_over(grid_string):
+    width=7
+    height=6
     # Convert string to 2D grid
-    grid = string_to_grid(grid_string, width)
+    grid = string_to_grid(grid_string)
 
     # Check for a winning line
     if check_victory(grid, 'a') or check_victory(grid, 'p'):
